@@ -1,0 +1,30 @@
+* {
+    background: #191D22;
+    foreground: #E6E7E8;
+    accent: #FF6266;
+    muted: #7E8995;
+    edge: #30353B;
+    background-color: transparent;
+    text-color: @foreground;
+    font: "JetBrains Mono 11";
+}
+window {
+    width: 28%;
+    location: center;
+    anchor: center;
+    background-color: @background;
+    border: 1px;
+    border-color: @edge;
+    border-radius: 2px;
+    padding: 18px;
+}
+mainbox { children: [ inputbar, message, listview ]; spacing: 12px; }
+inputbar { children: [ prompt, entry ]; spacing: 8px; padding: 8px; }
+prompt { text-color: @accent; }
+entry { placeholder: "Type here"; placeholder-color: @muted; }
+message { padding: 8px; }
+textbox { text-color: @muted; }
+listview { lines: 5; fixed-height: false; spacing: 4px; scrollbar: false; }
+element { padding: 10px; border-radius: 2px; }
+element selected.normal { background-color: @edge; text-color: @accent; }
+element-text { background-color: inherit; text-color: inherit; }

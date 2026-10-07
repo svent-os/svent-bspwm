@@ -1,0 +1,18 @@
+Package: svent-bspwm
+Version: 0.6.2
+Architecture: all
+Maintainer: z1rov <fabian@zirov.net>
+Installed-Size: 6563
+Depends: bspwm, sxhkd, polybar, rofi, kitty, dunst, python3, zsh, libnotify-bin, fonts-jetbrains-mono, pulseaudio-utils, iproute2, svent-core, svent-artwork, picom, feh, xclip, x11-xserver-utils, x11-utils, network-manager
+Recommends: flameshot, playerctl, brightnessctl, pavucontrol, i3lock, zsh-autosuggestions, zsh-syntax-highlighting, bat, imagemagick
+Suggests: betterlockscreen
+Conflicts: sv-bspwm
+Replaces: sv-bspwm
+Provides: sv-bspwm
+Section: x11
+Priority: optional
+Description: Svent OS bspwm session defaults
+ Default bspwm session for Svent OS: window manager rules, sxhkd keybindings,
+ a Polybar bar with status scripts, Dunst notifications, Picom compositor, a
+ Kitty terminal using zsh, and Rofi menus. Bundled fonts are registered with
+ fontconfig and the defaults are deployed to root and existing users on install.

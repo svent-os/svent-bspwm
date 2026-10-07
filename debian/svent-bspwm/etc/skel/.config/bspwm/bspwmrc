@@ -1,0 +1,46 @@
+#! /bin/sh
+# Svent OS default bspwm session. Adapted from z1rov's dotfiles.
+
+export XDG_CURRENT_DESKTOP='bspwm'
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+xsetroot -cursor_name left_ptr &
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d I II III IV V VI VII VIII
+
+bspc config top_padding           30
+bspc config bottom_padding        3
+bspc config right_padding         3
+bspc config left_padding          3
+bspc config window_gap            9
+bspc config split_ratio           0.505
+bspc config single_monocle        true
+bspc config automatic_scheme      longest_side
+bspc config initial_polarity      second_child
+bspc config removal_adjustment    true
+bspc config focus_follows_pointer true
+bspc config pointer_follows_focus false
+bspc config pointer_follows_monitor true
+bspc config pointer_motion_interval 7
+bspc config pointer_modifier      mod4
+bspc config pointer_action1       move
+bspc config pointer_action2       resize_side
+bspc config pointer_action3       resize_corner
+bspc config border_width          0
+
+bspc rule -a FloatingTerm state=floating center=true
+bspc rule -a kitty:FloatingTerm state=floating center=true
+
+# wallpaper: apply the saved choice so a user's own choice survives restarts
+[ -x /usr/libexec/svent/svent-wallpaper ] && /usr/libexec/svent/svent-wallpaper --apply &
+
+# notifications
+pgrep -x dunst >/dev/null || dunst &
+
+# compositor when available
+sleep 2
+pidof picom >/dev/null || picom --config "$HOME/.config/picom/picom.conf" -b &
+
+# status bar
+[ -r "$HOME/.config/polybar/launch.sh" ] && bash "$HOME/.config/polybar/launch.sh" &

@@ -1,0 +1,16 @@
+./skel/.config/bspwm
+./skel/.config/sxhkd
+./skel/.config/polybar
+./skel/.config/rofi
+./skel/.config/dunst
+./skel/.config/picom
+./skel/.config/kitty
+./skel/.config/systemd
+./skel/.zshrc
+./fonts/Z1rovWorkspace.ttf
+./fonts/MaterialDesignIconsDesktop.ttf
+./fonts/CozetteVectorNerdFont.ttf
+./fonts/iosevka_nerd_font.ttf
+./fonts/MesloLGS_NF_Regular.ttf
+./fonts/Phosphor.ttf
+./fonts/FontAwesome6-Free-Solid.otf
