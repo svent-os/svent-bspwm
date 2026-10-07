@@ -1,0 +1,174 @@
+# Author: z1rov
+
+[global]
+# Position
+monitor = 0
+follow = mouse
+origin = bottom-right
+offset = (22, 22)
+width = 398
+height = (90, 260)
+scale = 0
+notification_limit = 3
+indicate_hidden = false
+
+# Appearance
+background = "#191D22EE"
+foreground = "#E6E7E8"
+frame_color = "#414852"
+frame_width = 1
+corner_radius = 6
+transparency = 0
+gap_size = 8
+separator_height = 0
+padding = 12
+horizontal_padding = 18
+
+# Text
+font = Sans 10.5
+line_height = 3
+markup = no
+format = "<span foreground='#929CA8' size='small'>%a</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+alignment = left
+vertical_alignment = center
+word_wrap = true
+ellipsize = end
+ignore_newline = false
+show_age_threshold = -1
+show_indicators = false
+
+# Images
+icon_position = off
+enable_recursive_icon_lookup = false
+
+# Behavior
+sort = true
+idle_threshold = 120
+stack_duplicates = true
+hide_duplicate_count = true
+history_length = 50
+sticky_history = false
+ignore_dbusclose = false
+fullscreen = pushback
+enable_posix_regex = true
+browser = /usr/bin/xdg-open
+mouse_left_click = close_current
+mouse_middle_click = do_action, close_current
+mouse_right_click = close_all
+
+# Progress
+progress_bar = true
+progress_bar_height = 4
+progress_bar_frame_width = 0
+progress_bar_min_width = 250
+progress_bar_max_width = 360
+progress_bar_corner_radius = 2
+highlight = "#FF6266"
+
+[urgency_low]
+background = "#191D22EE"
+foreground = "#E6E7E8"
+frame_color = "#414852"
+timeout = 4
+
+[urgency_normal]
+background = "#191D22EE"
+foreground = "#E6E7E8"
+frame_color = "#414852"
+timeout = 6
+
+[urgency_critical]
+background = "#191D22EE"
+foreground = "#E6E7E8"
+frame_color = "#FF6266"
+timeout = 0
+
+
+[network]
+category = "^z1rov[.]network$"
+format = "<span foreground='#929CA8' size='small'>Network</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[battery]
+category = "^z1rov[.]battery$"
+format = "<span foreground='#929CA8' size='small'>Battery</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[power]
+category = "^z1rov[.]power$"
+format = "<span foreground='#929CA8' size='small'>Power</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[download]
+category = "^z1rov[.]download$"
+format = "<span foreground='#929CA8' size='small'>Downloads</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[message]
+category = "^z1rov[.]message$"
+format = "<span foreground='#929CA8' size='small'>Messages</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[screenshot]
+category = "^z1rov[.]screenshot$"
+format = "<span foreground='#929CA8' size='small'>Screenshot</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[clipboard]
+category = "^z1rov[.]clipboard$"
+format = "<span foreground='#929CA8' size='small'>Clipboard</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[system]
+category = "^z1rov[.]system$"
+format = "<span foreground='#929CA8' size='small'>System</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[error]
+category = "^z1rov[.]error$"
+format = "<span foreground='#929CA8' size='small'>Error</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[volume]
+category = "^z1rov[.]volume$"
+format = "<span foreground='#929CA8' size='small'>Volume</span>\n<span weight='bold' size='large'>%s</span>"
+set_stack_tag = volume
+timeout = 2
+override_dbus_timeout = 2
+history_ignore = true
+set_transient = true
+
+[brightness]
+category = "^z1rov[.]brightness$"
+format = "<span foreground='#929CA8' size='small'>Brightness</span>\n<span weight='bold' size='large'>%s</span>"
+set_stack_tag = brightness
+timeout = 2
+override_dbus_timeout = 2
+history_ignore = true
+set_transient = true
+
+[network_native]
+category = "^network[.]"
+format = "<span foreground='#929CA8' size='small'>Network</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[battery_native]
+category = "^device[.]battery"
+format = "<span foreground='#929CA8' size='small'>Battery</span>\n<span weight='bold' size='large'>%s</span>\n%b"
+
+[volume_native]
+appname = "^[Vv]olume$"
+format = "<span foreground='#929CA8' size='small'>Volume</span>\n<span weight='bold' size='large'>%s</span>"
+set_stack_tag = volume
+timeout = 2
+history_ignore = true
+
+[brightness_native]
+appname = "^[Bb]rightness$"
+format = "<span foreground='#929CA8' size='small'>Brightness</span>\n<span weight='bold' size='large'>%s</span>"
+set_stack_tag = brightness
+timeout = 2
+history_ignore = true
+
+[legacy_osd]
+appname = "^(dunstify|notify-send)$"
+summary = "^([[][+ -][]][[:space:]]*)?([Vv]olume|[Bb]rightness|[Mm]uted|[Uu]nmuted)"
+skip_display = true
+history_ignore = true
+script = "~/.config/dunst/scripts/normalize.py"
+
+[critical]
+msg_urgency = critical
+fullscreen = show
+frame_color = "#FF6266"
+override_dbus_timeout = 0

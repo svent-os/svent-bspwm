@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery notification check
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.config/dunst/scripts/battery-watch.py

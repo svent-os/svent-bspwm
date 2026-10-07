@@ -1,15 +1,92 @@
-sv-bspwm (0.5.1) unstable; urgency=medium
+svent-bspwm (0.6.0) unstable; urgency=medium
 
-  * Configure root and the validated sudo caller at installation or on demand.
-  * Classify network devices by kernel metadata and topology; validate links,
-    addresses and routes while preserving VPN, Ethernet, Wi-Fi, other priority.
+  * Couple with svent-artwork orca wallpapers; promote svent-core, svent-artwork,
+    picom, feh and x11 utilities to Depends so a working desktop is guaranteed.
+  * Network module identifies any NIC by kernel metadata (vpn, ethernet, wifi,
+    usb tethering, mobile/WWAN, virtual, other) instead of name prefixes.
+  * Supersede the sv-bspwm package (Conflicts/Replaces/Provides).
 
- -- z1rov <fabian@zirov.net>  Wed, 07 Oct 2026 16:00:00 -0500
+ -- z1rov <fabian@zirov.net>  Tue, 07 Oct 2026 21:00:00 -0500
 
-sv-bspwm (0.5.0) unstable; urgency=medium
+svent-bspwm (0.4.6) unstable; urgency=medium
 
-  * Convert the Svent bspwm beta into a standalone managed X11 session.
-  * Preserve customized files and manage the session process lifecycle.
-  * Add a core-backed category menu and fix shortcuts and bar geometry.
+  * Wallpaper picker (super+w) is now a thumbnail grid and also lists the
+    user's own wallpapers from ~/Pictures/Wallpapers.
+  * bspwmrc applies the saved wallpaper choice, so a user's own wallpaper
+    survives restarts and reinstalls (the choice lives in ~/.config/svent,
+    which the config sync never touches).
+  * postinst sets zsh as the login shell for root and existing users.
 
- -- z1rov <fabian@zirov.net>  Wed, 07 Oct 2026 15:00:00 -0500
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 16:00:00 +0000
+
+svent-bspwm (0.4.5) unstable; urgency=medium
+
+  * Replace emojis with Nerd Font glyphs: rofi search placeholder and the
+    kitty tab bell.
+  * Add a rofi wallpaper picker (super+w) backed by svent-wallpaper.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 14:00:00 +0000
+
+svent-bspwm (0.4.4) unstable; urgency=medium
+
+  * postinst: deploy the full Svent config (.config and .zshrc) to root and
+    every existing user, so all users share the same defaults and reinstalls
+    propagate updates, not just new accounts.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 13:30:00 +0000
+
+svent-bspwm (0.4.3) unstable; urgency=medium
+
+  * postinst: install the .zshrc for root and for existing users that lack
+    one, so the Svent shell config is not limited to new accounts.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 13:00:00 +0000
+
+svent-bspwm (0.4.2) unstable; urgency=medium
+
+  * Add a rofi launcher config (~/.config/rofi/config.rasi) in Svent red-on-dark
+    colors, used by the super+d app launcher. Uses the bundled MesloLGS NF.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 11:40:00 +0000
+
+svent-bspwm (0.4.1) unstable; urgency=medium
+
+  * zsh: red prompt, updated LS_COLORS, drop eza (use coreutils ls --color).
+  * Power menu: replace Suspend (resumes ugly in VMs) with Log out (bspc quit).
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 08:40:00 +0000
+
+svent-bspwm (0.4.0) unstable; urgency=medium
+
+  * Ship a vanilla .zshrc in /etc/skel: no oh-my-zsh or prompt framework.
+    Git branch via zsh vcs_info, plus zsh-autosuggestions and
+    zsh-syntax-highlighting sourced from Debian packages when present.
+  * Recommend zsh-autosuggestions, zsh-syntax-highlighting, bat and eza.
+  * Set the Polybar bar corner radius to 8.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 08:00:00 +0000
+
+svent-bspwm (0.3.1) unstable; urgency=medium
+
+  * Bundle the bar and terminal fonts so icons render: Material Design Icons
+    Desktop, Cozette, Iosevka and Meslo Nerd Fonts, Phosphor, FontAwesome.
+  * Install fonts under /usr/share/fonts/svent and refresh the cache.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 07:00:00 +0000
+
+svent-bspwm (0.3.0) unstable; urgency=medium
+
+  * Ship the full z1rov bspwm rice as /etc/skel dotfiles: bspwmrc, sxhkd
+    keybindings, a Polybar bar with status scripts, Dunst notifications,
+    Picom compositor, a Kitty terminal on zsh, and Rofi menus.
+  * Bundle the Z1rov Workspace font and register it on install.
+  * Drop the old /etc/xdg configs; a new user now gets a working desktop.
+  * Clean the bspwmrc and sxhkdrc of personal-only helper scripts.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sat, 03 Oct 2026 23:00:00 +0000
+
+svent-bspwm (0.2.0) unstable; urgency=medium
+
+  * Initial release: bspwm session defaults split from svent-desktop.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Thu, 02 Oct 2026 12:00:00 +0000

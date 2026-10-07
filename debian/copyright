@@ -1,28 +1,22 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: sv-bspwm
+Upstream-Name: svent-bspwm
 
 Files: *
-Copyright: 2026 Svent OS Maintainers and z1rov
+Copyright: 2026 Svent OS Maintainers
 License: GPL-3.0-or-later
- On Debian systems, the complete license text is available in
+ On Debian systems the full license text is in
  /usr/share/common-licenses/GPL-3.
-Comment:
- Adapted from the supplied Svent bspwm beta, whose configuration and
- workspace font are declared GPL-3.0-or-later in its debian/copyright.
-
-Files: fonts/MaterialDesignIconsDesktop.ttf
-Copyright: Pictogrammers contributors
-License: Apache-2.0
- On Debian systems, the complete license text is available in
- /usr/share/common-licenses/Apache-2.0.
-Comment:
- The desktop font was supplied with the beta. The upstream font license is
- documented at https://github.com/Templarian/MaterialDesign-Font/blob/master/LICENSE
- This conversion does not claim to have verified its binary against an
- upstream release. Its SHA-256 is recorded in docs/font-provenance.json.
 
 Files: fonts/Z1rovWorkspace.ttf
 Copyright: 2026 z1rov
 License: GPL-3.0-or-later
- On Debian systems, the complete license text is available in
- /usr/share/common-licenses/GPL-3.
+ Workspace glyph font for the Svent bspwm bar, authored by z1rov.
+
+Files: fonts/MaterialDesignIconsDesktop.ttf fonts/CozetteVectorNerdFont.ttf
+ fonts/iosevka_nerd_font.ttf fonts/MesloLGS_NF_Regular.ttf fonts/Phosphor.ttf
+ fonts/FontAwesome6-Free-Solid.otf
+Copyright: respective upstream font authors
+License: OFL-1.1-or-permissive
+ Third-party icon and Nerd Fonts bundled for the Svent bspwm bar and
+ terminal. Each is distributed under its own upstream license (SIL Open
+ Font License, Apache-2.0, MIT or CC-BY as applicable).

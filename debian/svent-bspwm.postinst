@@ -1,0 +1,41 @@
+#!/bin/sh
+set -e
+if [ "$1" = "configure" ]; then
+  # bspwm requires an executable bspwmrc; scripts are called by the bar
+  chmod 0755 /etc/skel/.config/bspwm/bspwmrc 2>/dev/null || true
+  chmod 0755 /etc/skel/.config/polybar/launch.sh 2>/dev/null || true
+  find /etc/skel/.config -name '*.sh' -exec chmod 0755 {} + 2>/dev/null || true
+  find /etc/skel/.config -name '*.py' -exec chmod 0755 {} + 2>/dev/null || true
+  # register the bundled fonts
+  if command -v fc-cache >/dev/null 2>&1; then
+    fc-cache -f /usr/share/fonts/svent >/dev/null 2>&1 || true
+  fi
+  # Deploy the Svent config to root and every existing user, so all users
+  # share the same defaults and reinstalls propagate updates. New users get
+  # the same files from /etc/skel. This overwrites the Svent-managed files.
+  deploy() {
+    home="$1"; owner="$2"
+    [ -d "$home" ] || return 0
+    mkdir -p "$home/.config"
+    cp -a /etc/skel/.config/. "$home/.config/"
+    [ -f /etc/skel/.zshrc ] && cp -a /etc/skel/.zshrc "$home/.zshrc"
+    mkdir -p "$home/.config/svent"
+    [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
+    chown -R "$owner" "$home/.config" 2>/dev/null || true
+    [ -f "$home/.zshrc" ] && chown "$owner" "$home/.zshrc" 2>/dev/null || true
+  }
+  deploy /root "root:root"
+  for home in /home/*; do
+    [ -d "$home" ] || continue
+    deploy "$home" "$(basename "$home"):$(basename "$home")"
+  done
+  # Svent uses zsh; make it the login shell for root and existing users
+  if [ -x /usr/bin/zsh ]; then
+    chsh -s /usr/bin/zsh root 2>/dev/null || true
+    for home in /home/*; do
+      [ -d "$home" ] || continue
+      chsh -s /usr/bin/zsh "$(basename "$home")" 2>/dev/null || true
+    done
+  fi
+fi
+#DEBHELPER#

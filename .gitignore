@@ -1,12 +1,2 @@
-*.deb
-*.buildinfo
-*.changes
-*.asc
-.debhelper/
-debhelper-build-stamp
-*.substvars
-*.debhelper.log
-debian/files
-debian/sv-bspwm/
 __pycache__/
 *.pyc

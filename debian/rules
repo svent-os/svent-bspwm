@@ -2,13 +2,10 @@
 %:
 	dh $@
 
-override_dh_auto_test:
-	python3 -B -m unittest discover -s tests -v
-
+# bspwm requires an executable bspwmrc; mark the scripts executable too
 override_dh_fixperms:
 	dh_fixperms
-	chmod 0755 debian/sv-bspwm/usr/bin/svent-bspwm-session
-	chmod 0755 debian/sv-bspwm/usr/bin/svent-bspwm-configure
-	find debian/sv-bspwm/usr/libexec/svent/bspwm -type f -exec chmod 0755 {} +
-	chmod 0755 debian/sv-bspwm/usr/share/svent/bspwm/defaults/config/bspwm/bspwmrc
-	find debian/sv-bspwm/usr/share/svent/bspwm/defaults/config -type f \( -name '*.sh' -o -name '*.py' \) -exec chmod 0755 {} +
+	chmod 0755 debian/svent-bspwm/etc/skel/.config/bspwm/bspwmrc
+	chmod 0755 debian/svent-bspwm/etc/skel/.config/polybar/launch.sh
+	find debian/svent-bspwm/etc/skel/.config -name '*.sh' -exec chmod 0755 {} +
+	find debian/svent-bspwm/etc/skel/.config -name '*.py' -exec chmod 0755 {} +

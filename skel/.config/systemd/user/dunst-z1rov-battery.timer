@@ -1,0 +1,10 @@
+[Unit]
+Description=Check battery level for desktop notifications
+
+[Timer]
+OnActiveSec=10s
+OnUnitActiveSec=30s
+Unit=dunst-z1rov-battery.service
+
+[Install]
+WantedBy=timers.target

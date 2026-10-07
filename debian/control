@@ -1,23 +1,25 @@
-Source: sv-bspwm
+Source: svent-bspwm
 Section: x11
 Priority: optional
 Maintainer: z1rov <fabian@zirov.net>
-Build-Depends: debhelper-compat (= 13), python3, zsh
+Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.7.0
 Rules-Requires-Root: no
 
-Package: sv-bspwm
+Package: svent-bspwm
 Architecture: all
-Conflicts: svent-bspwm
-Depends: ${misc:Depends}, svent-core, bspwm, sxhkd, polybar, rofi,
- kitty, dunst, python3, zsh, dbus-daemon, x11-xserver-utils, x11-utils,
- x11-xkb-utils, xdg-utils, fontconfig, fonts-jetbrains-mono,
- libnotify-bin, iproute2, xclip, util-linux
-Recommends: picom, feh, flameshot, playerctl, brightnessctl, rfkill,
- pulseaudio-utils, pavucontrol, i3lock, thunar,
- zsh-autosuggestions, zsh-syntax-highlighting
-Suggests: svent-artwork, network-manager, network-manager-gnome
-Description: Svent OS bspwm desktop session and defaults
- Provides an X11 session with bspwm, sxhkd, Polybar, Rofi, Kitty and Dunst.
- Defaults are initialized on login and updated only while unmodified.
- Uses the Svent core catalog for category-based tool launching.
+Depends: bspwm, sxhkd, polybar, rofi, kitty, dunst, python3, zsh,
+ libnotify-bin, fonts-jetbrains-mono, pulseaudio-utils, iproute2,
+ svent-core, svent-artwork, picom, feh, xclip, x11-xserver-utils,
+ x11-utils, network-manager, ${misc:Depends}
+Recommends: flameshot, playerctl, brightnessctl, pavucontrol, i3lock,
+ zsh-autosuggestions, zsh-syntax-highlighting, bat
+Suggests: betterlockscreen
+Conflicts: sv-bspwm
+Replaces: sv-bspwm
+Provides: sv-bspwm
+Description: Svent OS bspwm session defaults
+ Default bspwm session for Svent OS: window manager rules, sxhkd keybindings,
+ a Polybar bar with status scripts, Dunst notifications, Picom compositor, a
+ Kitty terminal using zsh, and Rofi menus. Bundled fonts are registered with
+ fontconfig and the defaults are deployed to root and existing users on install.
