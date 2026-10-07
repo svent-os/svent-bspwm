@@ -10,6 +10,9 @@ if [ "$1" = "configure" ]; then
   if command -v fc-cache >/dev/null 2>&1; then
     fc-cache -f /usr/share/fonts/svent >/dev/null 2>&1 || true
   fi
+  if [ -x /usr/bin/kitty ]; then
+    update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 60 >/dev/null 2>&1 || true
+  fi
   # Deploy the Svent config to root and every existing user, so all users
   # share the same defaults and reinstalls propagate updates. New users get
   # the same files from /etc/skel. This overwrites the Svent-managed files.

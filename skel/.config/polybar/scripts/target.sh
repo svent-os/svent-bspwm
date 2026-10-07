@@ -2,28 +2,28 @@
 set -u
 file="$HOME/.cache/target_ip"
 theme="$HOME/.config/rofi/polybar-z1rov/target.rasi"
+valid() { python3 -c 'import ipaddress,sys; ipaddress.ip_address(sys.argv[1].strip())' "$1" 2>/dev/null; }
 current=''
 [[ -r "$file" ]] && IFS= read -r current < "$file"
-normalize() {
- python3 -c 'import ipaddress,sys; v=sys.argv[1].strip(); assert "%" not in v; print(ipaddress.ip_address(v))' "$1" 2>/dev/null
-}
-if [[ "${1:-click}" == click ]] && normalize "$current" >/dev/null; then
- bash "$HOME/.config/polybar/scripts/status.sh" copy-target
- exit 0
+case "${1:-edit}" in
+  clear)
+    rm -f -- "$file"
+    exit 0
+    ;;
+  copy)
+    [[ -n "$current" ]] && valid "$current" || exit 0
+    if command -v xclip >/dev/null; then printf '%s' "$current" | xclip -selection clipboard
+    elif command -v xsel >/dev/null; then printf '%s' "$current" | xsel --clipboard --input; fi
+    exit 0
+    ;;
+esac
+value=$(rofi -no-config -theme "$theme" -dmenu -p "Target" -filter "$current" -mesg "Enter IPv4/IPv6 - empty to clear" < /dev/null) || exit 0
+value=$(printf '%s' "$value" | tr -d '[:space:]')
+if [[ -z "$value" ]]; then
+  rm -f -- "$file"
+  exit 0
 fi
-message=''
-while true; do
- value=$(rofi -no-config -theme "$theme" -dmenu -p 'Enter IP address' -mesg "$message" -filter "$current" -kb-custom-1 'Control+Delete' < /dev/null)
- code=$?
- if [[ "$code" == 10 ]]; then rm -f -- "$file"; exit 0; fi
- [[ "$code" == 0 ]] || exit 0
- normalized=$(normalize "$value") || {
-  current="$value"; message='Enter a valid IPv4 or IPv6 address'; continue
- }
- mkdir -p "$HOME/.cache"
- temp=$(mktemp "${file}.XXXXXX") || exit 1
- printf '%s\n' "$normalized" > "$temp"
- chmod 600 "$temp"
- mv -f -- "$temp" "$file"
- exit 0
-done
+valid "$value" || exit 0
+mkdir -p "$HOME/.cache"
+printf '%s\n' "$value" > "$file"
+chmod 600 "$file"

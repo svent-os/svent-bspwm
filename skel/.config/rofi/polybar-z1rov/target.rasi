@@ -1,52 +1,25 @@
 @import "theme.rasi"
 window {
-    width: 28%;
+    width: 26%;
     border-color: @accent;
-    padding: 14px;
+    padding: 16px;
 }
 mainbox {
     children: [ inputbar, message ];
-    spacing: 6px;
-}
-inputbar {
-    orientation: vertical;
-    children: [ prompt, address-row ];
     spacing: 10px;
 }
-address-row {
-    orientation: horizontal;
-    children: [ entry, clear-box ];
+inputbar {
+    children: [ prompt, entry ];
     spacing: 8px;
 }
-entry {
-    placeholder: "IPv4 or IPv6";
-    padding: 8px;
-    border: 1px;
-    border-color: @edge;
-}
-clear-box {
-    orientation: horizontal;
-    children: [ icon-clear, button-clear ];
-    expand: false;
-    spacing: 6px;
-    padding: 8px;
-    border: 1px;
-    border-color: @edge;
-}
-icon-clear {
-    filename: "~/.config/rofi/polybar-z1rov/icons/clear.svg";
-    size: 1em;
-    expand: false;
-    vertical-align: 0.5;
-    action: "kb-custom-1";
-}
-button-clear {
-    content: "No target";
-    action: "kb-custom-1";
-    expand: false;
-    vertical-align: 0.5;
+prompt {
     text-color: @accent;
 }
+entry {
+    placeholder: "IPv4 / IPv6";
+    placeholder-color: @muted;
+}
 message {
+    text-color: @muted;
     padding: 4px;
 }

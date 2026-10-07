@@ -13,7 +13,7 @@ Depends: bspwm, sxhkd, polybar, rofi, kitty, dunst, python3, zsh,
  svent-core, svent-artwork, picom, feh, xclip, x11-xserver-utils,
  x11-utils, network-manager, ${misc:Depends}
 Recommends: flameshot, playerctl, brightnessctl, pavucontrol, i3lock,
- zsh-autosuggestions, zsh-syntax-highlighting, bat
+ zsh-autosuggestions, zsh-syntax-highlighting, bat, imagemagick
 Suggests: betterlockscreen
 Conflicts: sv-bspwm
 Replaces: sv-bspwm

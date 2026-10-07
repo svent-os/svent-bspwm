@@ -2,6 +2,7 @@
 
 configuration {
     modi:                       "drun,run,filebrowser";
+    terminal:                   "kitty";
     font:                       "MesloLGS NF 10";
     display-drun:               " Apps";
     display-run:                "󰆍 Run";

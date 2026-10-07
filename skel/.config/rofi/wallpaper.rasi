@@ -2,7 +2,7 @@
 @import "config.rasi"
 
 window {
-    width:                      820px;
+    width:                      60%;
 }
 mainbox {
     children:                   [ inputbar, listview ];

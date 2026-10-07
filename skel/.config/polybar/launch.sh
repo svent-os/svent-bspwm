@@ -2,6 +2,9 @@
 set -eu
 cd "$HOME/.config/polybar"
 command -v polybar >/dev/null || { printf 'Polybar is required\n' >&2; exit 1; }
+if systemd-detect-virt --quiet 2>/dev/null; then
+ export SVENT_RIGHT="target divider power"
+fi
 state="${XDG_RUNTIME_DIR:-$HOME/.cache}/polybar-z1rov"
 mkdir -p "$state"
 if [[ -r "$state/pid" ]]; then

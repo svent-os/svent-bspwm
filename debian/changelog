@@ -1,3 +1,14 @@
+svent-bspwm (0.6.1) unstable; urgency=medium
+
+  * Polybar drops pulseaudio and battery on virtual machines (systemd-detect-virt).
+  * Rofi launches catalog tools in kitty (terminal set in rofi and x-terminal-emulator).
+  * Wallpaper picker labels designs as Environment N and caches thumbnails so
+    large images load; picker width is relative for any screen.
+  * Target module reworked: left-click edits in its own rofi, middle copies,
+    right clears.
+
+ -- z1rov <fabian@zirov.net>  Tue, 07 Oct 2026 22:30:00 -0500
+
 svent-bspwm (0.6.0) unstable; urgency=medium
 
   * Couple with svent-artwork orca wallpapers; promote svent-core, svent-artwork,
