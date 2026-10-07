@@ -1,0 +1,29 @@
+@import "config.rasi"
+
+window {
+    width:                      820px;
+}
+mainbox {
+    children:                   [ inputbar, listview ];
+}
+listview {
+    columns:                    3;
+    lines:                      2;
+    spacing:                    14px;
+    padding:                    14px;
+    scrollbar:                  false;
+}
+element {
+    orientation:                vertical;
+    padding:                    10px;
+    spacing:                    8px;
+    border-radius:              0px;
+}
+element-icon {
+    size:                       7.5em;
+    horizontal-align:           0.5;
+}
+element-text {
+    horizontal-align:           0.5;
+    vertical-align:             0.5;
+}

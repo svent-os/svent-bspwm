@@ -1,0 +1,11 @@
+#!/bin/sh
+bspc subscribe monitor_add monitor_remove monitor_geometry | while IFS= read -r event; do
+    sleep 0.3
+    case "$event" in
+        monitor_add*)
+            monitor=$(printf '%s\n' "$event" | cut -d ' ' -f 2)
+            bspc monitor "$monitor" -d I II III IV V VI VII VIII
+            ;;
+    esac
+    /usr/libexec/svent/bspwm/wallpaper-apply
+done

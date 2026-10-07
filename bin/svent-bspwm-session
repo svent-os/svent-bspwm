@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+export XDG_CURRENT_DESKTOP=bspwm
+export XDG_SESSION_DESKTOP=svent-bspwm
+export XDG_SESSION_TYPE=x11
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export _JAVA_AWT_WM_NONREPARENTING=1
+umask 077
+[ -n "${DISPLAY:-}" ] || { echo 'An X11 display is required.' >&2; exit 1; }
+if [ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ]; then
+    exec dbus-run-session -- /usr/libexec/svent/bspwm/session.py
+fi
+exec /usr/libexec/svent/bspwm/session.py

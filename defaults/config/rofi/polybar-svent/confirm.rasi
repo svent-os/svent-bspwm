@@ -1,0 +1,5 @@
+@import "theme.rasi"
+window { width: 22%; padding: 12px; }
+mainbox { children: [ message, listview ]; }
+inputbar { enabled: false; }
+listview { lines: 2; fixed-height: false; }

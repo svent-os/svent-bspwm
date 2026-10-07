@@ -1,0 +1,15 @@
+sv-bspwm (0.5.1) unstable; urgency=medium
+
+  * Configure root and the validated sudo caller at installation or on demand.
+  * Classify network devices by kernel metadata and topology; validate links,
+    addresses and routes while preserving VPN, Ethernet, Wi-Fi, other priority.
+
+ -- z1rov <fabian@zirov.net>  Wed, 07 Oct 2026 16:00:00 -0500
+
+sv-bspwm (0.5.0) unstable; urgency=medium
+
+  * Convert the Svent bspwm beta into a standalone managed X11 session.
+  * Preserve customized files and manage the session process lifecycle.
+  * Add a core-backed category menu and fix shortcuts and bar geometry.
+
+ -- z1rov <fabian@zirov.net>  Wed, 07 Oct 2026 15:00:00 -0500

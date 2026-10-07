@@ -1,0 +1,23 @@
+Source: sv-bspwm
+Section: x11
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13), python3, zsh
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-bspwm
+Architecture: all
+Conflicts: svent-bspwm
+Depends: ${misc:Depends}, svent-core, bspwm, sxhkd, polybar, rofi,
+ kitty, dunst, python3, zsh, dbus-daemon, x11-xserver-utils, x11-utils,
+ x11-xkb-utils, xdg-utils, fontconfig, fonts-jetbrains-mono,
+ libnotify-bin, iproute2, xclip, util-linux
+Recommends: picom, feh, flameshot, playerctl, brightnessctl, rfkill,
+ pulseaudio-utils, pavucontrol, i3lock, thunar,
+ zsh-autosuggestions, zsh-syntax-highlighting
+Suggests: svent-artwork, network-manager, network-manager-gnome
+Description: Svent OS bspwm desktop session and defaults
+ Provides an X11 session with bspwm, sxhkd, Polybar, Rofi, Kitty and Dunst.
+ Defaults are initialized on login and updated only while unmodified.
+ Uses the Svent core catalog for category-based tool launching.

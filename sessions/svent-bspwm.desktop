@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Svent bspwm
+Comment=Svent OS tiling desktop
+Exec=/usr/bin/svent-bspwm-session
+TryExec=/usr/bin/svent-bspwm-session
+Type=Application
+DesktopNames=bspwm;

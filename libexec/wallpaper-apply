@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+state="${XDG_CONFIG_HOME:-$HOME/.config}/svent"
+selector=/usr/libexec/svent/svent-wallpaper
+if [ -x "$selector" ] && command -v feh >/dev/null 2>&1; then
+    if [ -r "$state/wallpaper.override" ] || [ -r "$state/wallpaper.choice" ] ||
+       [ -r /usr/share/backgrounds/svent/landscape/svent-ridge-dark.png ]; then
+        "$selector" --apply && exit 0
+    fi
+fi
+xsetroot -solid '#191D22'

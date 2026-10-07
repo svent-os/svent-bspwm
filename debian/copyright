@@ -1,0 +1,28 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: sv-bspwm
+
+Files: *
+Copyright: 2026 Svent OS Maintainers and z1rov
+License: GPL-3.0-or-later
+ On Debian systems, the complete license text is available in
+ /usr/share/common-licenses/GPL-3.
+Comment:
+ Adapted from the supplied Svent bspwm beta, whose configuration and
+ workspace font are declared GPL-3.0-or-later in its debian/copyright.
+
+Files: fonts/MaterialDesignIconsDesktop.ttf
+Copyright: Pictogrammers contributors
+License: Apache-2.0
+ On Debian systems, the complete license text is available in
+ /usr/share/common-licenses/Apache-2.0.
+Comment:
+ The desktop font was supplied with the beta. The upstream font license is
+ documented at https://github.com/Templarian/MaterialDesign-Font/blob/master/LICENSE
+ This conversion does not claim to have verified its binary against an
+ upstream release. Its SHA-256 is recorded in docs/font-provenance.json.
+
+Files: fonts/Z1rovWorkspace.ttf
+Copyright: 2026 z1rov
+License: GPL-3.0-or-later
+ On Debian systems, the complete license text is available in
+ /usr/share/common-licenses/GPL-3.

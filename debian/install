@@ -1,0 +1,5 @@
+defaults/* usr/share/svent/bspwm/defaults/
+libexec/* usr/libexec/svent/bspwm/
+bin/* usr/bin/
+sessions/* usr/share/xsessions/
+fonts/* usr/share/fonts/truetype/svent-bspwm/
