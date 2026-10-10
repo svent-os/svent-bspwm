@@ -1,3 +1,11 @@
+svent-bspwm (0.6.13) unstable; urgency=medium
+
+  * Move session service activation outside the desktop startup path.
+  * Queue service shutdown without waiting for termination.
+  * Record service activation timings for startup diagnostics.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-bspwm (0.6.12) unstable; urgency=medium
 
   * Restore BSPWM notification services when switching from XFCE.
