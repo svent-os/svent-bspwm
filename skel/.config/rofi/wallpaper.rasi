@@ -1,19 +1,37 @@
 @import "config.rasi"
 
 window {
-    width:                      60%;
+    width:                      90%;
 }
 mainbox {
-    children:                   [ inputbar, listview ];
+    children:                   [ textbox-title, listview, message ];
+}
+textbox-title {
+    content:                    "Wallpapers";
+    font:                       "Sans Bold 12";
+    padding:                    16px 18px 4px;
+    expand:                     false;
+}
+inputbar {
+    enabled:                    false;
+}
+message {
+    padding:                    8px 18px 14px;
+}
+message textbox {
+    font:                       "Sans 9";
+    text-color:                 @fg-dim;
+    padding:                    0px;
 }
 listview {
     columns:                    3;
     lines:                      2;
-    spacing:                    14px;
-    padding:                    14px;
-    scrollbar:                  false;
+    spacing:                    12px;
+    padding:                    14px 18px;
+    scrollbar:                  true;
     layout:                     horizontal;
-    fixed-height:               false;
+    fixed-height:               true;
+    dynamic:                    false;
 }
 element {
     children:                   [ element-icon, element-text ];
@@ -24,9 +42,16 @@ element {
 }
 element-icon {
     size:                       7.5em;
+    squared:                    false;
     horizontal-align:           0.5;
 }
 element-text {
+    font:                       "Sans 10";
     horizontal-align:           0.5;
     vertical-align:             0.5;
+}
+scrollbar {
+    width:                      4px;
+    background-color:           @selected;
+    border-radius:              2px;
 }

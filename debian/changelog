@@ -1,3 +1,12 @@
+svent-bspwm (0.6.6) unstable; urgency=medium
+
+  * Show a responsive wallpaper gallery without a search box.
+  * Read English wallpaper names from the shared artwork catalog.
+  * Hide compatibility aliases and explain how to add custom wallpapers.
+  * Preserve the full image in cached previews and align the red accent.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:59:55 -0500
+
 svent-bspwm (0.6.5) unstable; urgency=medium
 
   * Remove conflicting Rofi Home bindings while retaining Control+A clearing.

@@ -20,10 +20,10 @@ configuration {
     bg:                         #191D22;
     fg:                         #d7dee7;
     fg-dim:                     #7E8995;
-    selected:                   #e0564a;
+    selected:                   #ff6266;
     selected-text:              #ffffff;
-    border-color:               #e0564a;
-    active:                     #e0564a;
+    border-color:               #ff6266;
+    active:                     #ff6266;
     button-bg:                  #10151d;
 
     background-color:           @bg;
