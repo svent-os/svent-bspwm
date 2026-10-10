@@ -1,3 +1,10 @@
+svent-bspwm (0.6.4) unstable; urgency=medium
+
+  * Store desktop menu and GTK defaults in package-specific paths.
+  * Allow installation alongside svent-xfce without file ownership conflicts.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:59:30 -0500
+
 svent-bspwm (0.6.3) unstable; urgency=medium
 
   * Integrate SventOS desktop icons and GTK defaults.

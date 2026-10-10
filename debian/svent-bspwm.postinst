@@ -24,7 +24,9 @@ if [ "$1" = "configure" ]; then
     [ -f /etc/skel/.zshrc ] && cp -a /etc/skel/.zshrc "$home/.zshrc"
     cp -a /etc/skel/.gtkrc-2.0 "$home/.gtkrc-2.0"
     mkdir -p "$home/.local/share/desktop-directories"
-    cp -a /etc/skel/.local/share/desktop-directories/. "$home/.local/share/desktop-directories/"
+    cp -a /usr/share/svent/bspwm/desktop-directories/. "$home/.local/share/desktop-directories/"
+    mkdir -p "$home/.config/gtk-3.0"
+    cp -a /usr/share/svent/bspwm/gtk-3.0/. "$home/.config/gtk-3.0/"
     chown "$owner" "$home/.gtkrc-2.0" "$home/.local" "$home/.local/share" 2>/dev/null || true
     chown -R "$owner" "$home/.local/share/desktop-directories" 2>/dev/null || true
     mkdir -p "$home/.config/svent"
