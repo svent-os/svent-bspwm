@@ -2,6 +2,7 @@
 # Svent OS default bspwm session. Adapted from z1rov's dotfiles.
 
 export XDG_CURRENT_DESKTOP='bspwm'
+python3 "$HOME/.config/bspwm/session-services.py" bspwm
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 xsetroot -cursor_name left_ptr &
