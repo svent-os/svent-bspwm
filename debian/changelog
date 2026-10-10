@@ -1,3 +1,11 @@
+svent-bspwm (0.6.9) unstable; urgency=medium
+
+  * Show three wallpaper previews with responsive monitor-based sizing.
+  * Center previews in consistent square canvases and refresh cached thumbnails.
+  * Clarify previous and next navigation in the gallery instructions.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:40:00 -0500
+
 svent-bspwm (0.6.8) unstable; urgency=medium
 
   * Reserve enough height for Rofi to create wallpaper preview elements.

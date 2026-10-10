@@ -1,7 +1,9 @@
 @import "config.rasi"
 
 window {
-    width: 1120px;
+    width: 78%;
+    location: center;
+    anchor: center;
     border: 1px;
     border-color: #343b43;
     border-radius: 12px;
@@ -17,7 +19,7 @@ inputbar {
 }
 listview {
     columns: 1;
-    lines: 5;
+    lines: 3;
     spacing: 14px;
     padding: 0px;
     scrollbar: false;
@@ -47,7 +49,7 @@ element selected.normal {
 }
 element-icon {
     size: 190px;
-    squared: false;
+    squared: true;
     expand: false;
     horizontal-align: 0.5;
     vertical-align: 0.5;

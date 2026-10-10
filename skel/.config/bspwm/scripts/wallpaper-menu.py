@@ -17,14 +17,14 @@ CATALOG = Path("/usr/share/svent/artwork/wallpapers.json")
 
 def thumbnail(source, cache):
     stat = source.stat()
-    key = hashlib.sha256(f"v2:{source.resolve()}:{stat.st_mtime_ns}:{stat.st_size}".encode()).hexdigest()
+    key = hashlib.sha256(f"v3:{source.resolve()}:{stat.st_mtime_ns}:{stat.st_size}".encode()).hexdigest()
     target = cache / (key + ".png")
     if not target.exists():
         try:
             with Image.open(source) as image:
                 image = ImageOps.exif_transpose(image).convert("RGB")
                 image.thumbnail((960, 540), Image.Resampling.LANCZOS)
-                image = ImageOps.pad(image, (480, 270), Image.Resampling.LANCZOS, color="#242a2e")
+                image = ImageOps.pad(image, (480, 480), Image.Resampling.LANCZOS, color="#242a2e")
                 temp = target.with_suffix(".tmp")
                 image.save(temp, format="PNG", compress_level=1)
                 temp.replace(target)
@@ -77,14 +77,14 @@ def monitor_size():
 
 
 def grid_theme(count, width, height):
-    visible = max(1, min(5, count))
-    available = int(width * 0.9)
-    image_size = min(190, max(40, (available - 36 - (visible - 1) * 14) // visible - 16),
-                     max(40, int(height * 0.75 - 92)))
+    visible = max(1, min(3, count))
+    available = int(width * 0.78)
+    image_size = max(24, min((available - 38 - (visible - 1) * 14) // visible - 16,
+                             int(height * 0.32), int(height * 0.8 - 94)))
     cell_width = image_size + 16
     cell_height = image_size + 16
-    window_width = visible * cell_width + (visible - 1) * 14 + 36
-    window_height = cell_height + 76
+    window_width = visible * cell_width + (visible - 1) * 14 + 38
+    window_height = cell_height + 78
     return (f"window {{ width: {window_width}px; height: {window_height}px; }} "
             f"listview {{ columns: 1; lines: {visible}; height: {cell_height}px; }} "
             f"element {{ width: {cell_width}px; height: {cell_height}px; }} "
@@ -118,7 +118,7 @@ def main():
     if not rows:
         raise SystemExit("No wallpapers are available")
     width, height = monitor_size()
-    help_text = "← → Browse · Enter Apply · Esc Close\nAdd images: " + html.escape(str(custom))
+    help_text = "← Previous · Next → · Enter Apply · Esc Close\nAdd images: " + html.escape(str(custom))
     result = subprocess.run(
         ["rofi", "-dmenu", "-i", "-p", "Wallpaper", "-show-icons", "-no-custom", "-format", "i", "-mesg", help_text,
          "-scroll-method", "1", "-no-cycle", "-monitor", "-1",
