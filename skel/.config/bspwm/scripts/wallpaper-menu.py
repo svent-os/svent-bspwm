@@ -78,16 +78,18 @@ def monitor_size():
 
 
 def grid_theme(count, width, height):
-    window_width = min(1440, int(width * 0.9))
-    columns = max(1, min(4, window_width // 280, count))
-    if count in (5, 6) and columns > 3:
-        columns = 3
-    cell_width = (window_width - 40 - (columns - 1) * 12) // columns
-    image_size = max(64, cell_width - 20)
-    cell_height = math.ceil(image_size * 9 / 16) + 48
-    available_rows = max(1, (int(height * 0.82) - 120) // cell_height)
-    rows = max(1, min(math.ceil(count / columns), available_rows))
-    return f"window {{ width: {window_width}px; }} listview {{ columns: {columns}; lines: {rows}; }} element-icon {{ size: {image_size}px; }}"
+    visible = max(1, min(5, count))
+    available = int(width * 0.9)
+    image_size = min(190, max(40, (available - 36 - (visible - 1) * 14) // visible - 16),
+                     max(40, int((height * 0.75 - 92) * 16 / 9)))
+    cell_width = image_size + 16
+    cell_height = math.ceil(image_size * 9 / 16) + 16
+    window_width = visible * cell_width + (visible - 1) * 14 + 36
+    window_height = cell_height + 76
+    return (f"window {{ width: {window_width}px; height: {window_height}px; }} "
+            f"listview {{ columns: 1; lines: {visible}; height: {cell_height}px; }} "
+            f"element {{ width: {cell_width}px; height: {cell_height}px; }} "
+            f"element-icon {{ size: {image_size}px; }}")
 
 
 def apply_selection(source, backgrounds, selector, state):
@@ -117,9 +119,12 @@ def main():
     if not rows:
         raise SystemExit("No wallpapers are available")
     width, height = monitor_size()
-    help_text = "Click or use arrows + Enter · Esc to close\nAdd your images to " + html.escape(str(custom))
+    help_text = "← → Browse · Enter Apply · Esc Close\nAdd images: " + html.escape(str(custom))
     result = subprocess.run(
         ["rofi", "-dmenu", "-i", "-p", "Wallpaper", "-show-icons", "-no-custom", "-format", "i", "-mesg", help_text,
+         "-scroll-method", "1", "-no-cycle", "-monitor", "-1",
+         "-kb-move-char-back", "", "-kb-move-char-forward", "",
+         "-kb-row-up", "Left,Up,Control+p", "-kb-row-down", "Right,Down,Control+n",
          "-theme", str(config / "rofi/wallpaper.rasi"), "-theme-str", grid_theme(len(rows), width, height)],
         input="".join(row for _, row in rows), capture_output=True, text=True, check=False,
     )

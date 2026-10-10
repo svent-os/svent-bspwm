@@ -1,57 +1,69 @@
 @import "config.rasi"
 
 window {
-    width:                      90%;
+    width: 1120px;
+    border: 1px;
+    border-color: #343b43;
+    border-radius: 12px;
+    padding: 0px;
 }
 mainbox {
-    children:                   [ textbox-title, listview, message ];
-}
-textbox-title {
-    content:                    "Wallpapers";
-    font:                       "Sans Bold 12";
-    padding:                    16px 18px 4px;
-    expand:                     false;
+    children: [ listview, message ];
+    spacing: 0px;
+    padding: 16px 18px 12px;
 }
 inputbar {
-    enabled:                    false;
-}
-message {
-    padding:                    8px 18px 14px;
-}
-message textbox {
-    font:                       "Sans 9";
-    text-color:                 @fg-dim;
-    padding:                    0px;
+    enabled: false;
 }
 listview {
-    columns:                    3;
-    lines:                      2;
-    spacing:                    12px;
-    padding:                    14px 18px;
-    scrollbar:                  true;
-    layout:                     horizontal;
-    fixed-height:               true;
-    dynamic:                    false;
+    columns: 1;
+    lines: 5;
+    spacing: 14px;
+    padding: 0px;
+    scrollbar: false;
+    layout: horizontal;
+    fixed-height: true;
+    dynamic: false;
+    cycle: false;
 }
 element {
-    children:                   [ element-icon, element-text ];
-    orientation:                vertical;
-    padding:                    10px;
-    spacing:                    8px;
-    border-radius:              0px;
+    children: [ element-icon ];
+    orientation: vertical;
+    padding: 6px;
+    spacing: 0px;
+    border: 2px;
+    border-color: transparent;
+    border-radius: 8px;
+    background-color: #242a2e;
+}
+element normal.normal {
+    background-color: #242a2e;
+    border-color: transparent;
+}
+element selected.normal {
+    background-color: #302427;
+    border-color: #ff6266;
+    border-radius: 8px;
 }
 element-icon {
-    size:                       7.5em;
-    squared:                    false;
-    horizontal-align:           0.5;
+    size: 190px;
+    squared: false;
+    expand: false;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: transparent;
 }
 element-text {
-    font:                       "Sans 10";
-    horizontal-align:           0.5;
-    vertical-align:             0.5;
+    enabled: false;
 }
-scrollbar {
-    width:                      4px;
-    background-color:           @selected;
-    border-radius:              2px;
+message {
+    padding: 12px 0px 0px;
+    background-color: transparent;
+}
+message textbox {
+    font: "Sans 8";
+    horizontal-align: 1.0;
+    text-color: @fg-dim;
+    padding: 0px;
+    background-color: transparent;
 }

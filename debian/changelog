@@ -1,3 +1,11 @@
+svent-bspwm (0.6.7) unstable; urgency=medium
+
+  * Show up to five compact wallpaper previews in a horizontal strip.
+  * Remove wallpaper titles and align instructions to the lower right.
+  * Enable continuous arrow navigation and use a subtle red selection border.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:59:58 -0500
+
 svent-bspwm (0.6.6) unstable; urgency=medium
 
   * Show a responsive wallpaper gallery without a search box.
