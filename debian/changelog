@@ -1,3 +1,11 @@
+svent-bspwm (0.6.11) unstable; urgency=medium
+
+  * Deploy only BSPWM-owned configuration and user service files.
+  * Preserve XFCE configuration, shared GTK preferences and saved backgrounds.
+  * Use the canonical artwork default for new users.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-bspwm (0.6.10) unstable; urgency=medium
 
   * Use a single-row three-column wallpaper grid instead of variable-width bar layout.

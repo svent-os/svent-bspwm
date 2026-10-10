@@ -4,8 +4,10 @@ if [ "$1" = "configure" ]; then
   # bspwm requires an executable bspwmrc; scripts are called by the bar
   chmod 0755 /etc/skel/.config/bspwm/bspwmrc 2>/dev/null || true
   chmod 0755 /etc/skel/.config/polybar/launch.sh 2>/dev/null || true
-  find /etc/skel/.config -name '*.sh' -exec chmod 0755 {} + 2>/dev/null || true
-  find /etc/skel/.config -name '*.py' -exec chmod 0755 {} + 2>/dev/null || true
+  for folder in bspwm sxhkd polybar rofi dunst picom kitty flameshot; do
+    find "/etc/skel/.config/$folder" -name '*.sh' -exec chmod 0755 {} + 2>/dev/null || true
+    find "/etc/skel/.config/$folder" -name '*.py' -exec chmod 0755 {} + 2>/dev/null || true
+  done
   # register the bundled fonts
   if command -v fc-cache >/dev/null 2>&1; then
     fc-cache -f /usr/share/fonts/svent >/dev/null 2>&1 || true
@@ -20,17 +22,23 @@ if [ "$1" = "configure" ]; then
     home="$1"; owner="$2"
     [ -d "$home" ] || return 0
     mkdir -p "$home/.config"
-    cp -a /etc/skel/.config/. "$home/.config/"
+    for folder in bspwm sxhkd polybar rofi dunst picom kitty flameshot; do
+      [ ! -d "/etc/skel/.config/$folder" ] || cp -a "/etc/skel/.config/$folder" "$home/.config/"
+    done
+    mkdir -p "$home/.config/systemd/user"
+    for unit in dunst-z1rov-battery.service dunst-z1rov-battery.timer; do
+      cp -a "/etc/skel/.config/systemd/user/$unit" "$home/.config/systemd/user/"
+    done
     [ -f /etc/skel/.zshrc ] && cp -a /etc/skel/.zshrc "$home/.zshrc"
     cp -a /etc/skel/.gtkrc-2.0 "$home/.gtkrc-2.0"
     mkdir -p "$home/.local/share/desktop-directories"
     cp -a /usr/share/svent/bspwm/desktop-directories/. "$home/.local/share/desktop-directories/"
     mkdir -p "$home/.config/gtk-3.0"
-    cp -a /usr/share/svent/bspwm/gtk-3.0/. "$home/.config/gtk-3.0/"
+    [ -f "$home/.config/gtk-3.0/settings.ini" ] || cp -a /usr/share/svent/bspwm/gtk-3.0/settings.ini "$home/.config/gtk-3.0/"
     chown "$owner" "$home/.gtkrc-2.0" "$home/.local" "$home/.local/share" 2>/dev/null || true
     chown -R "$owner" "$home/.local/share/desktop-directories" 2>/dev/null || true
     mkdir -p "$home/.config/svent"
-    [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
+    [ -f "$home/.config/svent/wallpaper.choice" ] || echo "currents-dark" > "$home/.config/svent/wallpaper.choice"
     chown -R "$owner" "$home/.config" 2>/dev/null || true
     [ -f "$home/.zshrc" ] && chown "$owner" "$home/.zshrc" 2>/dev/null || true
   }
