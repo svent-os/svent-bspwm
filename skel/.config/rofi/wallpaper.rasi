@@ -18,12 +18,13 @@ inputbar {
     enabled: false;
 }
 listview {
-    columns: 1;
-    lines: 3;
+    columns: 3;
+    lines: 1;
+    fixed-columns: true;
     spacing: 14px;
     padding: 0px;
     scrollbar: false;
-    layout: horizontal;
+    layout: vertical;
     fixed-height: true;
     dynamic: false;
     cycle: false;

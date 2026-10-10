@@ -1,3 +1,10 @@
+svent-bspwm (0.6.10) unstable; urgency=medium
+
+  * Use a single-row three-column wallpaper grid instead of variable-width bar layout.
+  * Name Flameshot captures with a dated SventOS screenshot pattern.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:50:00 -0500
+
 svent-bspwm (0.6.9) unstable; urgency=medium
 
   * Show three wallpaper previews with responsive monitor-based sizing.

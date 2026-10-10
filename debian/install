@@ -5,6 +5,7 @@ skel/.config/rofi etc/skel/.config/
 skel/.config/dunst etc/skel/.config/
 skel/.config/picom etc/skel/.config/
 skel/.config/kitty etc/skel/.config/
+skel/.config/flameshot etc/skel/.config/
 skel/.config/systemd etc/skel/.config/
 skel/.zshrc etc/skel/
 skel/.gtkrc-2.0 etc/skel/

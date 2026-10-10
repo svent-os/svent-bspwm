@@ -86,7 +86,7 @@ def grid_theme(count, width, height):
     window_width = visible * cell_width + (visible - 1) * 14 + 38
     window_height = cell_height + 78
     return (f"window {{ width: {window_width}px; height: {window_height}px; }} "
-            f"listview {{ columns: 1; lines: {visible}; height: {cell_height}px; }} "
+            f"listview {{ columns: {visible}; lines: 1; height: {cell_height}px; }} "
             f"element {{ width: {cell_width}px; height: {cell_height}px; }} "
             f"element-icon {{ size: {image_size}px; }}")
 
@@ -121,7 +121,7 @@ def main():
     help_text = "← Previous · Next → · Enter Apply · Esc Close\nAdd images: " + html.escape(str(custom))
     result = subprocess.run(
         ["rofi", "-dmenu", "-i", "-p", "Wallpaper", "-show-icons", "-no-custom", "-format", "i", "-mesg", help_text,
-         "-scroll-method", "1", "-no-cycle", "-monitor", "-1",
+         "-scroll-method", "0", "-no-cycle", "-monitor", "-1",
          "-kb-move-char-back", "", "-kb-move-char-forward", "",
          "-kb-row-up", "Left,Up,Control+p", "-kb-row-down", "Right,Down,Control+n",
          "-theme", str(config / "rofi/wallpaper.rasi"), "-theme-str", grid_theme(len(rows), width, height)],
