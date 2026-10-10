@@ -1,3 +1,11 @@
+svent-bspwm (0.6.5) unstable; urgency=medium
+
+  * Remove conflicting Rofi Home bindings while retaining Control+A clearing.
+  * Discover custom wallpapers recursively and include the saved custom image.
+  * Clear custom overrides only when selecting a bundled wallpaper.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:59:45 -0500
+
 svent-bspwm (0.6.4) unstable; urgency=medium
 
   * Store desktop menu and GTK defaults in package-specific paths.

@@ -3,7 +3,7 @@ configuration {
     terminal:                   "svent-bspwm-tool-terminal";
     icon-theme:                 "Svent";
     kb-clear-line:              "Control+a,Control+u,Control+w";
-    kb-move-front:              "Home,KP_Home";
+    kb-move-front:              "";
     kb-remove-to-sol:           "";
     font:                       "MesloLGS NF 10";
     display-drun:               " Apps";

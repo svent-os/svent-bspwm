@@ -29,10 +29,12 @@ def thumbnail(source, cache):
     return target
 
 
-def entries(backgrounds, custom, cache):
+def entries(backgrounds, custom, cache, current=None):
     files = sorted(backgrounds.glob("svent-*.png"))
     if custom.is_dir():
-        files += sorted(path for path in custom.iterdir() if path.is_file() and path.suffix.lower() in EXTENSIONS)
+        files += sorted(path for path in custom.rglob("*") if path.is_file() and path.suffix.lower() in EXTENSIONS)
+    if current and current.is_file() and current.suffix.lower() in EXTENSIONS and current not in files:
+        files.append(current)
     rows = []
     for source in files:
         if not source.is_file():
@@ -43,6 +45,15 @@ def entries(backgrounds, custom, cache):
     return rows
 
 
+def apply_selection(source, backgrounds, selector, state):
+    if source.parent == backgrounds:
+        (state / "wallpaper.override").unlink(missing_ok=True)
+        command = [str(selector), "--set", source.stem.removeprefix("svent-")]
+    else:
+        command = [str(selector), "--file", str(source)]
+    subprocess.run(command, check=True)
+
+
 def main():
     if not SELECTOR.is_file():
         raise SystemExit("The SventOS wallpaper selector is unavailable")
@@ -51,7 +62,13 @@ def main():
     cache.mkdir(parents=True, exist_ok=True)
     pictures = subprocess.run(["xdg-user-dir", "PICTURES"], capture_output=True, text=True, check=False)
     custom = Path(pictures.stdout.strip() or str(Path.home() / "Pictures")) / "Wallpapers"
-    rows = entries(BACKGROUNDS, custom, cache)
+    custom.mkdir(parents=True, exist_ok=True)
+    state = config / "svent"
+    override = state / "wallpaper.override"
+    current = None
+    if override.is_file():
+        current = Path(override.read_text().strip())
+    rows = entries(BACKGROUNDS, custom, cache, current)
     if not rows:
         raise SystemExit("No wallpapers are available")
     result = subprocess.run(
@@ -64,11 +81,7 @@ def main():
     if index >= len(rows):
         return
     source = rows[index][0]
-    if source.parent == BACKGROUNDS:
-        command = [str(SELECTOR), "--set", source.stem.removeprefix("svent-")]
-    else:
-        command = [str(SELECTOR), "--file", str(source)]
-    subprocess.run(command, check=True)
+    apply_selection(source, BACKGROUNDS, SELECTOR, state)
 
 
 if __name__ == "__main__":
