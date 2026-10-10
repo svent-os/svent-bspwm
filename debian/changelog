@@ -1,3 +1,12 @@
+svent-bspwm (0.6.3) unstable; urgency=medium
+
+  * Integrate SventOS desktop icons and GTK defaults.
+  * Render cached wallpaper thumbnails with reliable Rofi metadata.
+  * Clear launcher input with Control+A and keep tool terminals open.
+  * Remove the fixed compositor startup delay.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:59:00 -0500
+
 svent-bspwm (0.6.2) unstable; urgency=medium
 
   * Finalize target: working rofi theme, script and module bindings.

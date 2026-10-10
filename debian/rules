@@ -5,6 +5,7 @@
 # bspwm requires an executable bspwmrc; mark the scripts executable too
 override_dh_fixperms:
 	dh_fixperms
+	chmod 0755 debian/svent-bspwm/usr/bin/svent-bspwm-tool-terminal
 	chmod 0755 debian/svent-bspwm/etc/skel/.config/bspwm/bspwmrc
 	chmod 0755 debian/svent-bspwm/etc/skel/.config/polybar/launch.sh
 	find debian/svent-bspwm/etc/skel/.config -name '*.sh' -exec chmod 0755 {} +

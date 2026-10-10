@@ -7,6 +7,10 @@ skel/.config/picom etc/skel/.config/
 skel/.config/kitty etc/skel/.config/
 skel/.config/systemd etc/skel/.config/
 skel/.zshrc etc/skel/
+skel/.gtkrc-2.0 etc/skel/
+skel/.config/gtk-3.0 etc/skel/.config/
+skel/.local/share/desktop-directories etc/skel/.local/share/
+bin/svent-bspwm-tool-terminal usr/bin/
 fonts/Z1rovWorkspace.ttf usr/share/fonts/svent/
 fonts/MaterialDesignIconsDesktop.ttf usr/share/fonts/svent/
 fonts/CozetteVectorNerdFont.ttf usr/share/fonts/svent/

@@ -1,4 +1,3 @@
-// Svent wallpaper picker: thumbnail grid, Svent colors (imports config.rasi).
 @import "config.rasi"
 
 window {
@@ -13,8 +12,11 @@ listview {
     spacing:                    14px;
     padding:                    14px;
     scrollbar:                  false;
+    layout:                     horizontal;
+    fixed-height:               false;
 }
 element {
+    children:                   [ element-icon, element-text ];
     orientation:                vertical;
     padding:                    10px;
     spacing:                    8px;

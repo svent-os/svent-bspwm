@@ -1,13 +1,15 @@
-// Svent OS rofi launcher. Adapted from z1rov's config, Svent red-on-dark colors.
-
 configuration {
     modi:                       "drun,run,filebrowser";
-    terminal:                   "kitty";
+    terminal:                   "svent-bspwm-tool-terminal";
+    icon-theme:                 "Svent";
+    kb-clear-line:              "Control+a,Control+u,Control+w";
+    kb-move-front:              "Home,KP_Home";
+    kb-remove-to-sol:           "";
     font:                       "MesloLGS NF 10";
     display-drun:               " Apps";
     display-run:                "󰆍 Run";
     display-filebrowser:        "󰉖 Files";
-    drun-display-format:        "{icon}  {name}";
+    drun-display-format:        "{name}";
     sidebar-mode:                true;
     show-icons:                  true;
 }
@@ -77,6 +79,7 @@ listview {
 }
 
 element {
+    children:                   [ element-icon, element-text ];
     orientation:                horizontal;
     padding:                    7px 10px;
     spacing:                    10px;

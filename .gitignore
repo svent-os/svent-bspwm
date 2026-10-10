@@ -1,2 +1,11 @@
 __pycache__/
 *.pyc
+*.deb
+*.buildinfo
+*.changes
+debian/svent-bspwm/
+debian/.debhelper/
+debian/debhelper-build-stamp
+debian/files
+debian/*.substvars
+debian/*.debhelper.log

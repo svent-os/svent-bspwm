@@ -22,6 +22,11 @@ if [ "$1" = "configure" ]; then
     mkdir -p "$home/.config"
     cp -a /etc/skel/.config/. "$home/.config/"
     [ -f /etc/skel/.zshrc ] && cp -a /etc/skel/.zshrc "$home/.zshrc"
+    cp -a /etc/skel/.gtkrc-2.0 "$home/.gtkrc-2.0"
+    mkdir -p "$home/.local/share/desktop-directories"
+    cp -a /etc/skel/.local/share/desktop-directories/. "$home/.local/share/desktop-directories/"
+    chown "$owner" "$home/.gtkrc-2.0" "$home/.local" "$home/.local/share" 2>/dev/null || true
+    chown -R "$owner" "$home/.local/share/desktop-directories" 2>/dev/null || true
     mkdir -p "$home/.config/svent"
     [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
     chown -R "$owner" "$home/.config" 2>/dev/null || true

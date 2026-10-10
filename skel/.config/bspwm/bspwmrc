@@ -39,7 +39,6 @@ bspc rule -a kitty:FloatingTerm state=floating center=true
 pgrep -x dunst >/dev/null || dunst &
 
 # compositor when available
-sleep 2
 pidof picom >/dev/null || picom --config "$HOME/.config/picom/picom.conf" -b &
 
 # status bar
