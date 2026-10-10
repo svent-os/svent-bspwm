@@ -7,7 +7,6 @@ skel/.config/picom etc/skel/.config/
 skel/.config/kitty etc/skel/.config/
 skel/.config/flameshot etc/skel/.config/
 skel/.config/systemd etc/skel/.config/
-skel/.zshrc etc/skel/
 skel/.gtkrc-2.0 etc/skel/
 skel/.config/gtk-3.0 usr/share/svent/bspwm/
 skel/.local/share/desktop-directories usr/share/svent/bspwm/

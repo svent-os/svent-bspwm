@@ -1,3 +1,10 @@
+svent-bspwm (0.6.14) unstable; urgency=medium
+
+  * Keep native cat in the default Zsh profile.
+  * Drop the optional bat dependency.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-bspwm (0.6.13) unstable; urgency=medium
 
   * Move session service activation outside the desktop startup path.

@@ -1,23 +1,16 @@
-# Svent OS default zsh config. Vanilla: no oh-my-zsh, no prompt framework.
-# Adapted from z1rov's dotfiles.
-
 export ZSH_DISABLE_COMPFIX=true
 
-# History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY INC_APPEND_HISTORY
 
-# Sensible shell options
 setopt AUTO_CD INTERACTIVE_COMMENTS PROMPT_SUBST
 
-# Completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# Colors and git branch in the prompt, both built into zsh
 autoload -Uz colors && colors
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
@@ -27,23 +20,15 @@ precmd_functions+=(vcs_info)
 
 PS1='%F{red}%B%n@%m%b%f%F{yellow}:%f%F{red}%B%~%b%f${vcs_info_msg_0_}%F{yellow}\$%f '
 
-# LS_COLORS. ow/tw/st/or set so world-writable dirs are not lime-green.
 LS_COLORS="di=38;2;255;200;80:fi=38;2;220;220;220:ex=38;2;255;180;60:ln=38;2;120;200;255:so=38;2;180;140;255:bd=38;2;255;120;120:cd=38;2;255;160;80:ow=38;2;255;200;80:tw=38;2;255;200;80:st=38;2;100;180;255:or=38;2;255;80;80"
 export LS_COLORS
 
-# Aliases, only when the tool is installed. Debian ships bat as batcat.
-if command -v batcat >/dev/null; then
-  alias cat="batcat --theme='Solarized (dark)'"
-elif command -v bat >/dev/null; then
-  alias cat="bat --theme='Solarized (dark)'"
-fi
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias la='ls -A'
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# Lightweight plugins from Debian packages, not a framework. Highlighting last.
 [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
