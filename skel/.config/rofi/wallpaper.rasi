@@ -60,7 +60,7 @@ message {
     padding: 12px 0px 0px;
     background-color: transparent;
 }
-message textbox {
+textbox {
     font: "Sans 8";
     horizontal-align: 1.0;
     text-color: @fg-dim;

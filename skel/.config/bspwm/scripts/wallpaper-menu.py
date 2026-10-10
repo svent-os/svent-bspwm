@@ -2,7 +2,6 @@
 import hashlib
 import html
 import json
-import math
 import os
 import re
 import subprocess
@@ -81,9 +80,9 @@ def grid_theme(count, width, height):
     visible = max(1, min(5, count))
     available = int(width * 0.9)
     image_size = min(190, max(40, (available - 36 - (visible - 1) * 14) // visible - 16),
-                     max(40, int((height * 0.75 - 92) * 16 / 9)))
+                     max(40, int(height * 0.75 - 92)))
     cell_width = image_size + 16
-    cell_height = math.ceil(image_size * 9 / 16) + 16
+    cell_height = image_size + 16
     window_width = visible * cell_width + (visible - 1) * 14 + 36
     window_height = cell_height + 76
     return (f"window {{ width: {window_width}px; height: {window_height}px; }} "

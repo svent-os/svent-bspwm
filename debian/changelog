@@ -1,3 +1,10 @@
+svent-bspwm (0.6.8) unstable; urgency=medium
+
+  * Reserve enough height for Rofi to create wallpaper preview elements.
+  * Apply the lower-right instruction style to the message textbox.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:30:05 -0500
+
 svent-bspwm (0.6.7) unstable; urgency=medium
 
   * Show up to five compact wallpaper previews in a horizontal strip.
