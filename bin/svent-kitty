@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+binary=/opt/svent-kitty-0.43.1/kitty.app/bin/kitty
+if [ ! -x "$binary" ]; then
+    printf '[-] Kitty is missing. Run sudo svent-kitty-setup.\n' >&2
+    exit 1
+fi
+exec "$binary" "$@"

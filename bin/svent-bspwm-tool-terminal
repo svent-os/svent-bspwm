@@ -39,9 +39,9 @@ def main():
         return
     command = tool_command(arguments)
     if not command:
-        os.execvp("kitty", ["kitty"])
+        os.execvp("svent-kitty", ["svent-kitty"])
         return
-    os.execvp("kitty", ["kitty", "--title", "SventOS Tools", "python3", str(Path(__file__).resolve()), "--inside", *command])
+    os.execvp("svent-kitty", ["svent-kitty", "--title", "SventOS Tools", "python3", str(Path(__file__).resolve()), "--inside", *command])
 
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 if [ "$1" = "configure" ]; then
+  /usr/bin/svent-kitty-setup
   # bspwm requires an executable bspwmrc; scripts are called by the bar
   chmod 0755 /etc/skel/.config/bspwm/bspwmrc 2>/dev/null || true
   chmod 0755 /etc/skel/.config/polybar/launch.sh 2>/dev/null || true
@@ -12,8 +13,8 @@ if [ "$1" = "configure" ]; then
   if command -v fc-cache >/dev/null 2>&1; then
     fc-cache -f /usr/share/fonts/svent >/dev/null 2>&1 || true
   fi
-  if [ -x /usr/bin/kitty ]; then
-    update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 60 >/dev/null 2>&1 || true
+  if [ -x /usr/bin/svent-kitty ]; then
+    update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/svent-kitty 60 >/dev/null 2>&1 || true
   fi
   # Deploy the Svent config to root and every existing user, so all users
   # share the same defaults and reinstalls propagate updates. New users get

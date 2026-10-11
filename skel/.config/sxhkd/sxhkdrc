@@ -9,7 +9,7 @@ super + shift + {1-8}
 
 # terminal
 super + Return
-    sh -c 'cd ~ && exec kitty'
+    sh -c 'cd ~ && exec svent-kitty'
 
 # screenshot full / region: save, copy to clipboard, notify
 super + s
