@@ -1,3 +1,9 @@
+svent-bspwm (0.6.16) unstable; urgency=medium
+
+  * Keep scrollbar width stable and use prefix history navigation.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 13:00:00 -0500
+
 svent-bspwm (0.6.15) unstable; urgency=medium
 
   * Use official Kitty 0.43.1 with an interactive dark scrollbar.
