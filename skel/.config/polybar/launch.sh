@@ -7,7 +7,7 @@ if systemd-detect-virt --quiet 2>/dev/null; then
 fi
 state="${XDG_RUNTIME_DIR:-$HOME/.cache}/polybar-z1rov"
 mkdir -p "$state"
-exec 9>"$state/launch.lock"
+exec 9>"$state/launch-v2.lock"
 flock 9
 if [[ -r "$state/pid" ]]; then
  read -r oldpid < "$state/pid" || true
@@ -23,5 +23,5 @@ config="$HOME/.config/polybar/config.ini"
 display_id=$(printf '%s' "${DISPLAY:-}" | sha256sum | cut -c1-12)
 scaled="${XDG_RUNTIME_DIR:-$HOME/.cache}/svent-display-$display_id/polybar.ini"
 [ ! -r "$scaled" ] || config="$scaled"
-polybar --reload -c "$config" z1rov-bar > "$state/bar.log" 2>&1 &
+polybar --reload -c "$config" z1rov-bar 9>&- > "$state/bar.log" 2>&1 &
 printf '%s\n' "$!" > "$state/pid"

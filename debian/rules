@@ -5,6 +5,7 @@
 override_dh_auto_test:
 	sh -n skel/.config/bspwm/bspwmrc
 	bash -n skel/.config/polybar/launch.sh
+	python3 -m unittest discover -s tests -v
 
 # bspwm requires an executable bspwmrc; mark the scripts executable too
 override_dh_fixperms:
