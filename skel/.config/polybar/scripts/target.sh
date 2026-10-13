@@ -44,7 +44,7 @@ edit_target() {
     local message="IPv4 or IPv6 address"
 
     while :; do
-        value=$(rofi -no-config \
+        value=$(svent-rofi -no-config \
             -theme "$theme" \
             -dmenu \
             -p "Target" \

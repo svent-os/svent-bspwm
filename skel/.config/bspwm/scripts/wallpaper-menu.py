@@ -120,7 +120,7 @@ def main():
     width, height = monitor_size()
     help_text = "← Previous · Next → · Enter Apply · Esc Close\nAdd images: " + html.escape(str(custom))
     result = subprocess.run(
-        ["rofi", "-dmenu", "-i", "-p", "Wallpaper", "-show-icons", "-no-custom", "-format", "i", "-mesg", help_text,
+        ["svent-rofi", "-dmenu", "-i", "-p", "Wallpaper", "-show-icons", "-no-custom", "-format", "i", "-mesg", help_text,
          "-scroll-method", "0", "-no-cycle", "-monitor", "-1",
          "-kb-move-char-back", "", "-kb-move-char-forward", "",
          "-kb-row-up", "Left,Up,Control+p", "-kb-row-down", "Right,Down,Control+n",

@@ -11,6 +11,6 @@ elif command -v xsecurelock >/dev/null; then
 elif command -v slock >/dev/null; then
  exec slock
 else
- rofi -no-config -theme "$HOME/.config/rofi/polybar-z1rov/confirm.rasi" -e 'Install i3lock or configure POLYBAR_LOCK_COMMAND'
+ svent-rofi -no-config -theme "$HOME/.config/rofi/polybar-z1rov/confirm.rasi" -e 'Install i3lock or configure POLYBAR_LOCK_COMMAND'
  exit 1
 fi

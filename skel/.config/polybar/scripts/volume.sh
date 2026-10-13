@@ -12,7 +12,7 @@ case "${1:-status}" in
   fi ;;
  slider)
   theme="$HOME/.config/rofi/polybar-z1rov/volume.rasi"
-  choice=$(printf 'Mute\n25%%\n50%%\n75%%\n100%%\n' | rofi -no-config -theme "$theme" -dmenu -no-custom -format i -mesg "Current volume $(volume)%") || exit 0
+  choice=$(printf 'Mute\n25%%\n50%%\n75%%\n100%%\n' | svent-rofi -no-config -theme "$theme" -dmenu -no-custom -format i -mesg "Current volume $(volume)%") || exit 0
   case "$choice" in
    0) pactl set-sink-mute @DEFAULT_SINK@ toggle; exit ;;
    1) level=25 ;;

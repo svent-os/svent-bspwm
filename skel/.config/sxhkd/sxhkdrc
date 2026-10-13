@@ -71,7 +71,7 @@ super + f
 
 # app launcher
 super + d
-    rofi -show drun
+    svent-rofi -show drun
 
 # wallpaper picker
 super + w

@@ -6,7 +6,6 @@ python3 "$HOME/.config/bspwm/session-services.py" bspwm
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 xsetroot -cursor_name left_ptr &
-pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d I II III IV V VI VII VIII
 
@@ -33,6 +32,16 @@ bspc config border_width          0
 bspc rule -a FloatingTerm state=floating center=true
 bspc rule -a kitty:FloatingTerm state=floating center=true
 
+if [ -x /usr/libexec/svent/display-scale ]; then
+    if ! /usr/libexec/svent/display-scale start bspwm; then
+        bash "$HOME/.config/polybar/launch.sh" &
+    fi
+else
+    [ -r "$HOME/.config/polybar/launch.sh" ] && bash "$HOME/.config/polybar/launch.sh" &
+fi
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
 # wallpaper: apply the saved choice so a user's own choice survives restarts
 [ -x /usr/libexec/svent/svent-wallpaper ] && /usr/libexec/svent/svent-wallpaper --apply &
 
@@ -41,10 +50,3 @@ pgrep -x dunst >/dev/null || dunst &
 
 # compositor when available
 pidof picom >/dev/null || picom --config "$HOME/.config/picom/picom.conf" -b &
-
-# status bar
-if [ -x /usr/libexec/svent/display-scale ]; then
-    /usr/libexec/svent/display-scale start bspwm || bash "$HOME/.config/polybar/launch.sh" &
-else
-    [ -r "$HOME/.config/polybar/launch.sh" ] && bash "$HOME/.config/polybar/launch.sh" &
-fi
