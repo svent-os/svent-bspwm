@@ -2,6 +2,10 @@
 %:
 	dh $@
 
+override_dh_auto_test:
+	sh -n skel/.config/bspwm/bspwmrc
+	bash -n skel/.config/polybar/launch.sh
+
 # bspwm requires an executable bspwmrc; mark the scripts executable too
 override_dh_fixperms:
 	dh_fixperms
