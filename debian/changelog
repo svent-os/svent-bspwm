@@ -1,3 +1,9 @@
+svent-bspwm (0.6.19) unstable; urgency=medium
+
+  * Require xz-utils to extract the Kitty runtime during configuration.
+
+ -- z1rov <fabian@zirov.net>  Tue, 13 Oct 2026 02:15:00 -0500
+
 svent-bspwm (0.6.18) unstable; urgency=medium
 
   * Scale Polybar and window spacing for the primary display.
