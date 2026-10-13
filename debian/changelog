@@ -1,3 +1,9 @@
+svent-bspwm (0.6.21) unstable; urgency=medium
+
+  * Use bar-only display adjustment without changing application dimensions.
+
+ -- z1rov <fabian@zirov.net>  Tue, 13 Oct 2026 11:00:00 -0500
+
 svent-bspwm (0.6.20) unstable; urgency=medium
 
   * Release the launcher lock before starting Polybar so display changes can restart it.
