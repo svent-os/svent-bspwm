@@ -19,9 +19,11 @@ if [[ -r "$state/pid" ]]; then
   done
  fi
 fi
-config="$HOME/.config/polybar/config.ini"
+config="${SVENT_POLYBAR_CONFIG:-$HOME/.config/polybar/config.ini}"
 display_id=$(printf '%s' "${DISPLAY:-}" | sha256sum | cut -c1-12)
 scaled="${XDG_RUNTIME_DIR:-$HOME/.cache}/svent-display-$display_id/polybar.ini"
-[ ! -r "$scaled" ] || config="$scaled"
+if [ -z "${SVENT_POLYBAR_CONFIG:-}" ] && [ -r "$scaled" ]; then
+ config="$scaled"
+fi
 polybar --reload -c "$config" z1rov-bar 9>&- > "$state/bar.log" 2>&1 &
 printf '%s\n' "$!" > "$state/pid"

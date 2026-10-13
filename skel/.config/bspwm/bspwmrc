@@ -43,5 +43,8 @@ pgrep -x dunst >/dev/null || dunst &
 pidof picom >/dev/null || picom --config "$HOME/.config/picom/picom.conf" -b &
 
 # status bar
-[ -r "$HOME/.config/polybar/launch.sh" ] && bash "$HOME/.config/polybar/launch.sh" &
-[ -x /usr/libexec/svent/display-scale ] && /usr/libexec/svent/display-scale start bspwm
+if [ -x /usr/libexec/svent/display-scale ]; then
+    /usr/libexec/svent/display-scale start bspwm || bash "$HOME/.config/polybar/launch.sh" &
+else
+    [ -r "$HOME/.config/polybar/launch.sh" ] && bash "$HOME/.config/polybar/launch.sh" &
+fi
